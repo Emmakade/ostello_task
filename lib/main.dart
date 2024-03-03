@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task/provider/market_place_provider.dart';
+import 'package:task/provider/refer_earn_provider.dart';
 import 'package:task/provider/quick_info_provider.dart';
 import 'package:task/screens/ai_screen.dart';
 import 'package:task/screens/home_screen.dart';
@@ -10,7 +10,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => QuickInfoProvider()),
-      ChangeNotifierProvider(create: (_) => MarketPlaceProvider()),
+      ChangeNotifierProvider(create: (_) => ReferEarnProvider()),
     ],
     child: const MainApp(),
   ));

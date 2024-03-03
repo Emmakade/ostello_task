@@ -9,6 +9,7 @@ import 'package:task/DataModel/quick_info.dart';
 import 'package:task/DataModel/refer_earn.dart';
 import 'package:task/MyPaint/top_action.dart';
 import 'package:task/provider/quick_info_provider.dart';
+import 'package:task/provider/refer_earn_provider.dart';
 
 class MarketPlaceScreen extends StatefulWidget {
   const MarketPlaceScreen({super.key});
@@ -183,18 +184,22 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Wrap(
-                  direction: Axis.horizontal,
-                  spacing: 5,
-                  alignment: WrapAlignment.spaceEvenly,
-                  children: referearns
-                      .map((re) => MultiContainer(
-                          title: re.title!,
-                          desc: re.description!,
-                          img: re.image!,
-                          bg: re.background!,
-                          color: re.color!))
-                      .toList(),
+                child: FutureBuilder<List<ReferEarn>>(
+                  future: ReferEarnProvider().getReferDetails(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      List<ReferEarn>? refererList = snapshot.data;
+                      return Row(
+                        children: refererList!
+                            .map((ref) => MultiContainer(referEarn: ref))
+                            .toList(),
+                      );
+                    }
+                  },
                 ),
               ),
               const SizedBox(
