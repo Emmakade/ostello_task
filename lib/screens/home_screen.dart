@@ -8,6 +8,9 @@ import 'package:task/CustomWidget/top_service_wid2.dart';
 import 'package:task/CustomWidget/top_service_widget.dart';
 import 'package:task/DataModel/refer_earn.dart';
 import 'package:task/MyPaint/top_action.dart';
+import 'package:task/utils/image_asset.dart';
+import 'package:task/utils/my_strings.dart';
+import 'package:task/utils/svg_asset.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,12 +20,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final String assetName = 'assets/img_search.svg';
-  final String assetName0 = 'assets/img_arrow_down.svg';
-
-  final String assetName1 = 'assets/img_nav_home.svg';
-  final String assetName2 = 'assets/img_nav_marketplace.svg';
-
   @override
   Widget build(BuildContext context) {
     final Widget profileLocation =
@@ -34,10 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
         SvgPicture.asset(assetName2, semanticsLabel: 'Marketplace');
 
     ReferEarn ref = ReferEarn(
-        title: 'Refer & Earn',
-        description:
-            'Invite a friend to ostello and earn ₹1000 worth of coins.',
-        image: 'assets/img_purse.png',
+        title: referTitle,
+        description: referDesc,
+        image: referImage,
         background: Theme.of(context).colorScheme.background,
         color: Theme.of(context).colorScheme.onBackground);
     return Scaffold(
@@ -57,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hi Rajbir,',
+                  profileName,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
                     fontSize: 17,
@@ -71,10 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     profileLocation,
                     const Expanded(
                       child: Text(
-                        'Gandhinagar, Ahmedabadeba',
+                        fullName,
                         style: TextStyle(
                           color: Colors.black54,
-                          fontSize: 15,
+                          fontSize: 16,
                           fontFamily: 'Avenir',
                           fontWeight: FontWeight.w500,
                         ),
@@ -100,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         const Spacer(),
                         Image.asset(
-                          "assets/coin.png",
+                          coin,
                           width: 20,
                           height: 20,
                         ),
@@ -154,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 30,
               ),
               const TitleWidget(
-                title: "Top Services",
+                title: topService,
               ),
               const SizedBox(
                 height: 20,
@@ -180,8 +176,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     elevation: 5,
                     child: const TopServiceWidget(
-                      img: "assets/graduation_cap.png",
-                      title: "Scholarship",
+                      img: graduationCap,
+                      title: scholarshipTitle,
                     ),
                   ),
                 ],
@@ -190,10 +186,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 20,
               ),
               const TopServiceContainer(
-                title: "Your Career Roadmap",
-                desc:
-                    "Those who plan ahead hold the key to the future. Construct a",
-                img: "assets/img_arrow3.png",
+                title: careerRoadmap,
+                desc: careerDesc,
+                img: threeArrows,
               ),
               const SizedBox(
                 height: 30,
@@ -221,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {},
         tooltip: 'ai',
         child: Image.asset(
-          "assets/img_ai.png",
+          aiImage,
           width: 100,
         ),
       ),

@@ -10,6 +10,9 @@ import 'package:task/DataModel/refer_earn.dart';
 import 'package:task/MyPaint/top_action.dart';
 import 'package:task/provider/quick_info_provider.dart';
 import 'package:task/provider/refer_earn_provider.dart';
+import 'package:task/utils/image_asset.dart';
+import 'package:task/utils/my_strings.dart';
+import 'package:task/utils/svg_asset.dart';
 
 class MarketPlaceScreen extends StatefulWidget {
   const MarketPlaceScreen({super.key});
@@ -19,43 +22,33 @@ class MarketPlaceScreen extends StatefulWidget {
 }
 
 class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
-  final String assetName = 'assets/img_search.svg';
-  final String assetName0 = 'assets/img_arrow_down.svg';
-
-  final String assetName1 = 'assets/img_nav_home.svg';
-  final String assetName2 = 'assets/img_nav_marketplace.svg';
-
   List<ReferEarn> referearns = [
     ReferEarn(
-        title: 'Refer & Earn',
-        description:
-            'Invite a friend to ostello and earn ₹1000 worth of coins.',
-        image: 'assets/img_logo.png',
+        title: referTitle,
+        description: referDesc,
+        image: referLogo,
         background: const Color(0xFF16763E),
         color: const Color(0xFFFFFFFF)),
     ReferEarn(
-        title: 'Refer & Earn',
-        description:
-            'Invite a friend to ostello and earn ₹1000 worth of coins.',
-        image: 'assets/img_gov.png',
+        title: referTitle,
+        description: referDesc,
+        image: referGovt,
         background: const Color(0xFFE67A1F),
         color: const Color(0xFFFFFFFF)),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final Widget profileLocation =
-        SvgPicture.asset(assetName, semanticsLabel: 'Profile Location');
-    final Widget arrowDown =
-        SvgPicture.asset(assetName0, semanticsLabel: 'arrow down');
+    final Widget profileLocation = SvgPicture.asset(assetName);
+    final Widget arrowDown = SvgPicture.asset(assetName0);
 
     final Widget homeSvg = SvgPicture.asset(assetName1,
         colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-        semanticsLabel: 'Home');
+        semanticsLabel: homeTitle);
     final Widget marketplaceSvg = SvgPicture.asset(assetName2,
         colorFilter: ColorFilter.mode(
             Theme.of(context).colorScheme.primary, BlendMode.srcIn),
-        semanticsLabel: 'Marketplace');
+        semanticsLabel: marketPlaceTitle);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
@@ -76,7 +69,7 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                   'Hi Rajbir,',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onBackground,
-                    fontSize: 16,
+                    fontSize: 17,
                     fontFamily: 'Avenir',
                     fontWeight: FontWeight.w800,
                   ),
@@ -91,10 +84,10 @@ class _MarketPlaceScreenState extends State<MarketPlaceScreen> {
                     profileLocation,
                     const Expanded(
                       child: Text(
-                        'Gandhinagar, Ahmedabad',
+                        'Gandhinagar, Ahmedabadeba',
                         style: TextStyle(
                           color: Colors.black54,
-                          fontSize: 14,
+                          fontSize: 16,
                           fontFamily: 'Avenir',
                           fontWeight: FontWeight.w500,
                         ),
